@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magicode</title>
+    <title>MagiCode</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             background-color: #1a1a2e;
             display: flex;
@@ -18,13 +17,11 @@
             align-items: center;
             min-height: 100vh;
         }
-
         .game-container {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
         iframe {
             border: none;
             display: block;
@@ -33,27 +30,21 @@
 </head>
 <body>
     <div class="game-container">
-        <iframe id="game-frame" src="game/index.html" scrolling="no"></iframe>
+        <iframe id="game-frame" src="game/index.html" scrolling="no" allowfullscreen></iframe>
     </div>
 
     <script>
         const frame = document.getElementById('game-frame');
         const aspectRatio = 9 / 16;
         const baseWidth = 800;
-        const step = 100; // 100 단위로 줄어듦
+        const step = 100;
 
         function resizeGame() {
             const windowWidth = window.innerWidth;
-
-            // 100 단위로 내림
             let width = Math.floor(windowWidth / step) * step;
-
-            // 최대 800, 최소 400
             width = Math.min(width, baseWidth);
             width = Math.max(width, 400);
-
             const height = Math.round(width * aspectRatio);
-
             frame.style.width = width + 'px';
             frame.style.height = height + 'px';
             frame.width = width;
